@@ -1,5 +1,8 @@
 
 import java.awt.Color;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.DefaultComboBoxModel;
@@ -30,6 +33,17 @@ public class Main extends javax.swing.JFrame {
     static ArrayList<Computadora> computadoras = new ArrayList();
     static ArrayList<Tecnico> tecnicos = new ArrayList();
 
+    static File file = new File("./bitacora.txt");
+    static File tech = new File("./tecnicos.txt");
+    
+    static File a_ram = new File("./ram.coc");
+    static File a_disco = new File("./disco.coc");
+    static File a_bateria = new File("./bateria.coc");
+    static File a_teclado = new File("./teclado.coc");
+    static File a_pantalla = new File("./pantalla.coc");
+    static File a_procesador = new File("./procesador.coc");
+    
+    
     public Main() {
         initComponents();
         setLocationRelativeTo(null);
@@ -827,6 +841,15 @@ public class Main extends javax.swing.JFrame {
         Tecnico t = new Tecnico(tfNombreT.getText(), (int) sEdadT.getValue(), (String) cbGeneroT.getSelectedItem(), 0);
         tecnicos.add(t);
         JOptionPane.showMessageDialog(crudTecnico, "Creado exitosamente");
+        FileWriter fw = null;
+        BufferedWriter bw = null;
+        try{
+            fw = new FileWriter(tech, true);
+            bw = new BufferedWriter(fw);
+            bw.write(t.toString());
+        }catch(Exception e){
+            
+        }
     }//GEN-LAST:event_bAgregarTMouseClicked
 
     private void bActualizarTMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bActualizarTMouseClicked
@@ -866,7 +889,18 @@ public class Main extends javax.swing.JFrame {
             t.setEnsambladas(t.getEnsambladas() + 1);
             int index = cbTSimulacion.getSelectedIndex();
             tecnicos.set(index, t);
+        } else {
+            FileWriter fw = null;
+            BufferedWriter bw = null;
+            try{
+                fw = new FileWriter(file, true);
+                bw = new BufferedWriter(fw);
+                bw.write("Computadora: " + c + " con tecnico: " + t + " no se armo exitosamente");
+            }catch(Exception e){
+                
+            }
         }
+            
             
     }//GEN-LAST:event_bIniciarMouseClicked
 
