@@ -109,6 +109,7 @@ public class Main extends javax.swing.JFrame {
         cbTSimulacion = new javax.swing.JComboBox<>();
         progressbar = new javax.swing.JProgressBar();
         bIniciar = new javax.swing.JButton();
+        bAC = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         bCRUD_T = new javax.swing.JButton();
@@ -600,28 +601,36 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
+        bAC.setText("Actualizar Campos");
+        bAC.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bACMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGap(72, 72, 72)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addGap(72, 72, 72)
                         .addComponent(jLabel16)
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel8Layout.createSequentialGroup()
-                                .addComponent(cbCSimulacion, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(96, 96, 96)
-                                .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(30, 30, 30)
-                                .addComponent(cbTSimulacion, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(progressbar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addGap(272, 272, 272)
-                        .addComponent(bIniciar, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(226, Short.MAX_VALUE))
+                        .addComponent(cbCSimulacion, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(96, 96, 96)
+                        .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(30, 30, 30)
+                        .addComponent(cbTSimulacion, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(progressbar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGap(122, 122, 122)
+                .addComponent(bAC, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 182, Short.MAX_VALUE)
+                .addComponent(bIniciar, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(147, 147, 147))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -633,7 +642,9 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(jLabel17)
                     .addComponent(cbTSimulacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(77, 77, 77)
-                .addComponent(bIniciar, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bAC, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bIniciar, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(54, 54, 54)
                 .addComponent(progressbar, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(294, Short.MAX_VALUE))
@@ -659,6 +670,11 @@ public class Main extends javax.swing.JFrame {
         jLabel1.setText("Examen II P2");
 
         bCRUD_T.setText("CRUD Tecnico");
+        bCRUD_T.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bCRUD_TMouseClicked(evt);
+            }
+        });
 
         bSimulacion.setText("Simulacion");
         bSimulacion.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -727,6 +743,7 @@ public class Main extends javax.swing.JFrame {
         
         Computadora c = new Computadora(serie, fecha, color, material, ram, disco, bateria, teclado, pantalla, procesador);
         computadoras.add(c);
+        JOptionPane.showMessageDialog(crudCompu, "Creado exitosamente");
     }//GEN-LAST:event_aCompuMouseClicked
 
     private void bColorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bColorMouseClicked
@@ -771,7 +788,7 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_aPantallaMouseClicked
 
     private void aProcesadorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_aProcesadorMouseClicked
-        procesador = new Procesador(Integer.parseInt(JOptionPane.showInputDialog(crudCompu)),
+        procesador = new Procesador(Integer.parseInt(JOptionPane.showInputDialog(crudCompu, "Ingrese cantidad de nucleos")),
         JOptionPane.showInputDialog(crudCompu, "Ingrese velocidad"), 3);
     }//GEN-LAST:event_aProcesadorMouseClicked
 
@@ -809,6 +826,7 @@ public class Main extends javax.swing.JFrame {
     private void bAgregarTMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bAgregarTMouseClicked
         Tecnico t = new Tecnico(tfNombreT.getText(), (int) sEdadT.getValue(), (String) cbGeneroT.getSelectedItem(), 0);
         tecnicos.add(t);
+        JOptionPane.showMessageDialog(crudTecnico, "Creado exitosamente");
     }//GEN-LAST:event_bAgregarTMouseClicked
 
     private void bActualizarTMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bActualizarTMouseClicked
@@ -838,8 +856,31 @@ public class Main extends javax.swing.JFrame {
     private void bIniciarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bIniciarMouseClicked
         Computadora c = (Computadora) cbCSimulacion.getSelectedItem();
         Tecnico t = (Tecnico) cbTSimulacion.getSelectedItem();
-        
+        int duracion = c.getRam().getTiempo() + c.getDisco().getTiempo()+
+                c.getBateria().getTiempo() + c.getTeclado().getTiempo()+
+                c.getPantalla().getTiempo() + c.getProcesador().getTiempo();
+        progressbar.setMaximum(100);
+        Hilos h = new Hilos(duracion, progressbar, c, t);
+        h.start();
     }//GEN-LAST:event_bIniciarMouseClicked
+
+    private void bCRUD_TMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bCRUD_TMouseClicked
+        crudTecnico.pack();
+        crudTecnico.setLocationRelativeTo(this);
+        crudTecnico.setVisible(true);
+    }//GEN-LAST:event_bCRUD_TMouseClicked
+
+    private void bACMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bACMouseClicked
+        DefaultComboBoxModel modelo = (DefaultComboBoxModel) cbCSimulacion.getModel();
+        DefaultComboBoxModel modelo2 = (DefaultComboBoxModel) cbTSimulacion.getModel();
+        
+        for (Computadora computadora : computadoras) {
+            modelo.addElement(computadora);
+        }
+        for (Tecnico tecnico : tecnicos) {
+            modelo2.addElement(tecnico);
+        }
+    }//GEN-LAST:event_bACMouseClicked
 
     /**
      * @param args the command line arguments
@@ -886,6 +927,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton aProcesador;
     private javax.swing.JButton aRAM;
     private javax.swing.JButton aTeclado;
+    private javax.swing.JButton bAC;
     private javax.swing.JButton bActualizar;
     private javax.swing.JButton bActualizarT;
     private javax.swing.JButton bAgregarT;
