@@ -21,10 +21,12 @@ public class Hilos extends Thread {
         this.progress_bar = progress_bar;
         this.c = c;
         this.t = t;
+        temp = progress_bar.getMaximum()/duracion;
+        chance = t.getEnsambladas();
     }
 
-    private int temp = progress_bar.getMaximum()/duracion;
-    private int chance = t.getEnsambladas();
+    private int temp;
+    private int chance;
     
     public int getDuracion() {
         return duracion;

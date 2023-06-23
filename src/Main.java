@@ -859,9 +859,15 @@ public class Main extends javax.swing.JFrame {
         int duracion = c.getRam().getTiempo() + c.getDisco().getTiempo()+
                 c.getBateria().getTiempo() + c.getTeclado().getTiempo()+
                 c.getPantalla().getTiempo() + c.getProcesador().getTiempo();
-        progressbar.setMaximum(100);
+        progressbar.setMaximum(100);        
         Hilos h = new Hilos(duracion, progressbar, c, t);
         h.start();
+        if (h.isArmado()){
+            t.setEnsambladas(t.getEnsambladas() + 1);
+            int index = cbTSimulacion.getSelectedIndex();
+            tecnicos.set(index, t);
+        }
+            
     }//GEN-LAST:event_bIniciarMouseClicked
 
     private void bCRUD_TMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bCRUD_TMouseClicked
