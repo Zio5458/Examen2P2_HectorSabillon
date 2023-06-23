@@ -102,6 +102,13 @@ public class Main extends javax.swing.JFrame {
         bModificarT = new javax.swing.JButton();
         bEliminarT = new javax.swing.JButton();
         simulacion = new javax.swing.JDialog();
+        jPanel8 = new javax.swing.JPanel();
+        jLabel16 = new javax.swing.JLabel();
+        cbCSimulacion = new javax.swing.JComboBox<>();
+        jLabel17 = new javax.swing.JLabel();
+        cbTSimulacion = new javax.swing.JComboBox<>();
+        progressbar = new javax.swing.JProgressBar();
+        bIniciar = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         bCRUD_T = new javax.swing.JButton();
@@ -578,15 +585,69 @@ public class Main extends javax.swing.JFrame {
             .addComponent(jTabbedPane2)
         );
 
+        jPanel8.setBackground(new java.awt.Color(204, 204, 204));
+
+        jLabel16.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel16.setText("Computadora");
+
+        jLabel17.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel17.setText("Tecnico");
+
+        bIniciar.setText("Iniciar Simulacion");
+        bIniciar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bIniciarMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
+        jPanel8.setLayout(jPanel8Layout);
+        jPanel8Layout.setHorizontalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addGap(72, 72, 72)
+                        .addComponent(jLabel16)
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel8Layout.createSequentialGroup()
+                                .addComponent(cbCSimulacion, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(96, 96, 96)
+                                .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(30, 30, 30)
+                                .addComponent(cbTSimulacion, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(progressbar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addGap(272, 272, 272)
+                        .addComponent(bIniciar, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(226, Short.MAX_VALUE))
+        );
+        jPanel8Layout.setVerticalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGap(59, 59, 59)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel16)
+                    .addComponent(cbCSimulacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel17)
+                    .addComponent(cbTSimulacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(77, 77, 77)
+                .addComponent(bIniciar, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(54, 54, 54)
+                .addComponent(progressbar, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(294, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout simulacionLayout = new javax.swing.GroupLayout(simulacion.getContentPane());
         simulacion.getContentPane().setLayout(simulacionLayout);
         simulacionLayout.setHorizontalGroup(
             simulacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         simulacionLayout.setVerticalGroup(
             simulacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -600,6 +661,11 @@ public class Main extends javax.swing.JFrame {
         bCRUD_T.setText("CRUD Tecnico");
 
         bSimulacion.setText("Simulacion");
+        bSimulacion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bSimulacionMouseClicked(evt);
+            }
+        });
 
         bCRUD_C.setText("CRUD Computadora");
         bCRUD_C.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -763,6 +829,18 @@ public class Main extends javax.swing.JFrame {
         tecnicos.remove(index);
     }//GEN-LAST:event_bEliminarTMouseClicked
 
+    private void bSimulacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bSimulacionMouseClicked
+        simulacion.pack();
+        simulacion.setLocationRelativeTo(this);
+        simulacion.setVisible(true);
+    }//GEN-LAST:event_bSimulacionMouseClicked
+
+    private void bIniciarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bIniciarMouseClicked
+        Computadora c = (Computadora) cbCSimulacion.getSelectedItem();
+        Tecnico t = (Tecnico) cbTSimulacion.getSelectedItem();
+        
+    }//GEN-LAST:event_bIniciarMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -817,13 +895,16 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton bColor2;
     private javax.swing.JButton bEliminar;
     private javax.swing.JButton bEliminarT;
+    private javax.swing.JButton bIniciar;
     private javax.swing.JButton bMD;
     private javax.swing.JButton bModificar;
     private javax.swing.JButton bModificarT;
     private javax.swing.JButton bSimulacion;
+    private javax.swing.JComboBox<String> cbCSimulacion;
     private javax.swing.JComboBox<String> cbCompus;
     private javax.swing.JComboBox<String> cbGeneroT;
     private javax.swing.JComboBox<String> cbGeneroT2;
+    private javax.swing.JComboBox<String> cbTSimulacion;
     private javax.swing.JComboBox<String> cbTecnicos;
     private javax.swing.JDialog crudCompu;
     private javax.swing.JDialog crudTecnico;
@@ -836,6 +917,8 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -851,8 +934,10 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
+    private javax.swing.JProgressBar progressbar;
     private javax.swing.JSpinner sEdadT;
     private javax.swing.JSpinner sEdadT2;
     private javax.swing.JDialog simulacion;

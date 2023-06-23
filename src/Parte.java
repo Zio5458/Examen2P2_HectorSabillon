@@ -1,5 +1,5 @@
 
-public class Parte extends Thread {
+public class Parte {
     
     private int tiempo;
 
