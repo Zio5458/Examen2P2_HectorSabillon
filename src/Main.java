@@ -101,10 +101,11 @@ public class Main extends javax.swing.JFrame {
         bActualizarT = new javax.swing.JButton();
         bModificarT = new javax.swing.JButton();
         bEliminarT = new javax.swing.JButton();
+        simulacion = new javax.swing.JDialog();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         bCRUD_T = new javax.swing.JButton();
-        bEnsamblaje = new javax.swing.JButton();
+        bSimulacion = new javax.swing.JButton();
         bCRUD_C = new javax.swing.JButton();
 
         crudCompu.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -577,6 +578,17 @@ public class Main extends javax.swing.JFrame {
             .addComponent(jTabbedPane2)
         );
 
+        javax.swing.GroupLayout simulacionLayout = new javax.swing.GroupLayout(simulacion.getContentPane());
+        simulacion.getContentPane().setLayout(simulacionLayout);
+        simulacionLayout.setHorizontalGroup(
+            simulacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        simulacionLayout.setVerticalGroup(
+            simulacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -587,7 +599,7 @@ public class Main extends javax.swing.JFrame {
 
         bCRUD_T.setText("CRUD Tecnico");
 
-        bEnsamblaje.setText("Ensamblaje");
+        bSimulacion.setText("Simulacion");
 
         bCRUD_C.setText("CRUD Computadora");
         bCRUD_C.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -608,7 +620,7 @@ public class Main extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(bCRUD_T, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 102, Short.MAX_VALUE)
-                        .addComponent(bEnsamblaje, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(bSimulacion, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(136, 136, 136))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -623,7 +635,7 @@ public class Main extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bCRUD_C, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bCRUD_T, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bEnsamblaje, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(bSimulacion, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(325, Short.MAX_VALUE))
         );
 
@@ -805,10 +817,10 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton bColor2;
     private javax.swing.JButton bEliminar;
     private javax.swing.JButton bEliminarT;
-    private javax.swing.JButton bEnsamblaje;
     private javax.swing.JButton bMD;
     private javax.swing.JButton bModificar;
     private javax.swing.JButton bModificarT;
+    private javax.swing.JButton bSimulacion;
     private javax.swing.JComboBox<String> cbCompus;
     private javax.swing.JComboBox<String> cbGeneroT;
     private javax.swing.JComboBox<String> cbGeneroT2;
@@ -843,6 +855,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JSpinner sEdadT;
     private javax.swing.JSpinner sEdadT2;
+    private javax.swing.JDialog simulacion;
     private javax.swing.JTextField tfMaterial;
     private javax.swing.JTextField tfMaterial2;
     private javax.swing.JTextField tfNombreT;
