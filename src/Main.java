@@ -2,7 +2,9 @@
 import java.awt.Color;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.DefaultComboBoxModel;
@@ -42,6 +44,7 @@ public class Main extends javax.swing.JFrame {
     static File a_teclado = new File("./teclado.coc");
     static File a_pantalla = new File("./pantalla.coc");
     static File a_procesador = new File("./procesador.coc");
+    static File compu = new File("./computadora.coc");
     
     
     public Main() {
@@ -758,6 +761,34 @@ public class Main extends javax.swing.JFrame {
         Computadora c = new Computadora(serie, fecha, color, material, ram, disco, bateria, teclado, pantalla, procesador);
         computadoras.add(c);
         JOptionPane.showMessageDialog(crudCompu, "Creado exitosamente");
+        FileOutputStream fo = null;
+        ObjectOutputStream oo = null;
+        try{
+            fo = new FileOutputStream(a_ram);
+            oo = new ObjectOutputStream(fo);            
+            oo.writeObject(ram);
+            fo = new FileOutputStream(a_disco);
+            oo = new ObjectOutputStream(fo);            
+            oo.writeObject(disco);
+            fo = new FileOutputStream(a_bateria);
+            oo = new ObjectOutputStream(fo);            
+            oo.writeObject(bateria);
+            fo = new FileOutputStream(a_teclado);
+            oo = new ObjectOutputStream(fo);            
+            oo.writeObject(teclado);
+            fo = new FileOutputStream(a_pantalla);
+            oo = new ObjectOutputStream(fo);            
+            oo.writeObject(pantalla);
+            fo = new FileOutputStream(a_procesador);
+            oo = new ObjectOutputStream(fo);            
+            oo.writeObject(procesador);
+            fo = new FileOutputStream(compu);
+            oo = new ObjectOutputStream(fo);            
+            oo.writeObject(c);
+            //no se creo que esta bien
+        }catch(Exception e){            
+        }
+        
     }//GEN-LAST:event_aCompuMouseClicked
 
     private void bColorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bColorMouseClicked
