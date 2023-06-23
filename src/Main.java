@@ -1,19 +1,36 @@
+
+import java.awt.Color;
+import java.util.ArrayList;
+import java.util.Date;
+import javax.swing.JColorChooser;
+import javax.swing.JOptionPane;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 /**
  *
  * @author hdann
  */
 public class Main extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Main
-     */
+    static int serie;
+    static Date fecha;
+    static Color color;
+    static String material;
+    static RAM ram;
+    static DiscoDuro disco;
+    static Bateria bateria;
+    static Teclado teclado;
+    static Pantalla pantalla;
+    static Procesador procesador;
+    
+    static ArrayList<Computadora> computadoras = new ArrayList();
+
     public Main() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -28,6 +45,22 @@ public class Main extends javax.swing.JFrame {
         crudCompu = new javax.swing.JDialog();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         AgregarC = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        tfSerie = new javax.swing.JTextField();
+        dcFecha = new com.toedter.calendar.JDateChooser();
+        bColor = new javax.swing.JButton();
+        tfMaterial = new javax.swing.JTextField();
+        aRAM = new javax.swing.JButton();
+        aDisco = new javax.swing.JButton();
+        aBateria = new javax.swing.JButton();
+        aTeclado = new javax.swing.JButton();
+        aPantalla = new javax.swing.JButton();
+        aProcesador = new javax.swing.JButton();
+        aCompu = new javax.swing.JButton();
         ModC = new javax.swing.JPanel();
         ListarC = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
@@ -36,18 +69,162 @@ public class Main extends javax.swing.JFrame {
         bEnsamblaje = new javax.swing.JButton();
         bCRUD_C = new javax.swing.JButton();
 
+        crudCompu.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         jTabbedPane1.setBackground(new java.awt.Color(204, 204, 204));
         jTabbedPane1.setForeground(new java.awt.Color(0, 0, 0));
+
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setText("Serie");
+
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setText("Fecha");
+
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel4.setText("Color");
+
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel5.setText("Material");
+
+        bColor.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bColorMouseClicked(evt);
+            }
+        });
+
+        aRAM.setText("Agregar RAM");
+        aRAM.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                aRAMMouseClicked(evt);
+            }
+        });
+
+        aDisco.setText("Agregar Disco");
+        aDisco.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                aDiscoMouseClicked(evt);
+            }
+        });
+
+        aBateria.setText("Agregar Bateria");
+        aBateria.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                aBateriaMouseClicked(evt);
+            }
+        });
+
+        aTeclado.setText("Agregar Teclado");
+        aTeclado.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                aTecladoMouseClicked(evt);
+            }
+        });
+
+        aPantalla.setText("Agregar Pantalla");
+        aPantalla.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                aPantallaMouseClicked(evt);
+            }
+        });
+
+        aProcesador.setText("Agregar Procesador");
+        aProcesador.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                aProcesadorMouseClicked(evt);
+            }
+        });
+
+        aCompu.setText("Agregar");
+        aCompu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                aCompuMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(60, 60, 60)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel5))
+                .addGap(37, 37, 37)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(dcFecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(tfSerie)
+                    .addComponent(bColor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(tfMaterial))
+                .addGap(114, 114, 114)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(aRAM, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(aDisco, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(aBateria, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE))
+                        .addGap(45, 45, 45)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(aTeclado, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(aPantalla, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(aProcesador)))
+                    .addComponent(aCompu, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(121, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(53, 53, 53)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(tfSerie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(aRAM)
+                    .addComponent(aTeclado))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(dcFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(aDisco)
+                            .addComponent(aPantalla))))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(bColor, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(aBateria)
+                            .addComponent(aProcesador))))
+                .addGap(48, 48, 48)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(tfMaterial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(aCompu, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(165, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout AgregarCLayout = new javax.swing.GroupLayout(AgregarC);
         AgregarC.setLayout(AgregarCLayout);
         AgregarCLayout.setHorizontalGroup(
             AgregarCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 751, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         AgregarCLayout.setVerticalGroup(
             AgregarCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 479, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Agregar", AgregarC);
@@ -56,11 +233,11 @@ public class Main extends javax.swing.JFrame {
         ModC.setLayout(ModCLayout);
         ModCLayout.setHorizontalGroup(
             ModCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 751, Short.MAX_VALUE)
+            .addGap(0, 766, Short.MAX_VALUE)
         );
         ModCLayout.setVerticalGroup(
             ModCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 479, Short.MAX_VALUE)
+            .addGap(0, 482, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Modificar", ModC);
@@ -69,25 +246,16 @@ public class Main extends javax.swing.JFrame {
         ListarC.setLayout(ListarCLayout);
         ListarCLayout.setHorizontalGroup(
             ListarCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 751, Short.MAX_VALUE)
+            .addGap(0, 766, Short.MAX_VALUE)
         );
         ListarCLayout.setVerticalGroup(
             ListarCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 479, Short.MAX_VALUE)
+            .addGap(0, 482, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Listar", ListarC);
 
-        javax.swing.GroupLayout crudCompuLayout = new javax.swing.GroupLayout(crudCompu.getContentPane());
-        crudCompu.getContentPane().setLayout(crudCompuLayout);
-        crudCompuLayout.setHorizontalGroup(
-            crudCompuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
-        );
-        crudCompuLayout.setVerticalGroup(
-            crudCompuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
-        );
+        crudCompu.getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -102,6 +270,11 @@ public class Main extends javax.swing.JFrame {
         bEnsamblaje.setText("Ensamblaje");
 
         bCRUD_C.setText("CRUD Computadora");
+        bCRUD_C.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bCRUD_CMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -148,6 +321,62 @@ public class Main extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void aCompuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_aCompuMouseClicked
+        serie = Integer.parseInt(tfSerie.getText());
+        fecha = dcFecha.getDate();
+        color = bColor.getBackground();
+        material = tfMaterial.getText();
+        
+        Computadora c = new Computadora(serie, fecha, color, material, ram, disco, bateria, teclado, pantalla, procesador);
+        computadoras.add(c);
+    }//GEN-LAST:event_aCompuMouseClicked
+
+    private void bColorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bColorMouseClicked
+        bColor.setBackground(JColorChooser.showDialog(crudCompu, "Ingrese color", Color.black));
+    }//GEN-LAST:event_bColorMouseClicked
+
+    private void bCRUD_CMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bCRUD_CMouseClicked
+        crudCompu.pack();
+        crudCompu.setLocationRelativeTo(this);
+        crudCompu.setVisible(true);
+    }//GEN-LAST:event_bCRUD_CMouseClicked
+
+    private void aRAMMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_aRAMMouseClicked
+        ram = new RAM(Integer.parseInt(JOptionPane.showInputDialog(crudCompu, "Ingrese tamano")),
+                JOptionPane.showInputDialog(crudCompu, "Ingrese marca"), 3);
+    }//GEN-LAST:event_aRAMMouseClicked
+
+    private void aDiscoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_aDiscoMouseClicked
+        disco = new DiscoDuro(Integer.parseInt(JOptionPane.showInputDialog(crudCompu, "Ingrese tamano")),
+                JOptionPane.showInputDialog(crudCompu, "Ingrese marca"), 3);
+    }//GEN-LAST:event_aDiscoMouseClicked
+
+    private void aBateriaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_aBateriaMouseClicked
+        bateria = new Bateria(Integer.parseInt(JOptionPane.showInputDialog(crudCompu, "Ingrese capacidad")),
+                JOptionPane.showInputDialog(crudCompu, "Ingrese material"),
+                2);
+    }//GEN-LAST:event_aBateriaMouseClicked
+
+    private void aTecladoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_aTecladoMouseClicked
+        teclado = new Teclado(JOptionPane.showInputDialog(crudCompu, "Ingrese material"),
+        JColorChooser.showDialog(crudCompu, "Ingrese color", Color.black), 2);
+    }//GEN-LAST:event_aTecladoMouseClicked
+
+    private void aPantallaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_aPantallaMouseClicked
+        int temp = JOptionPane.showConfirmDialog(crudCompu, "La pantalla es tactil?");
+        String tipo = JOptionPane.showInputDialog(crudCompu, "Ingrese tipo");
+        if (temp == 0){
+            pantalla = new Pantalla(true, tipo, 4);
+        } else {
+            pantalla = new Pantalla(false, tipo, 4);
+        }
+    }//GEN-LAST:event_aPantallaMouseClicked
+
+    private void aProcesadorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_aProcesadorMouseClicked
+        procesador = new Procesador(Integer.parseInt(JOptionPane.showInputDialog(crudCompu)),
+        JOptionPane.showInputDialog(crudCompu, "Ingrese velocidad"), 3);
+    }//GEN-LAST:event_aProcesadorMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -187,12 +416,28 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel AgregarC;
     private javax.swing.JPanel ListarC;
     private javax.swing.JPanel ModC;
+    private javax.swing.JButton aBateria;
+    private javax.swing.JButton aCompu;
+    private javax.swing.JButton aDisco;
+    private javax.swing.JButton aPantalla;
+    private javax.swing.JButton aProcesador;
+    private javax.swing.JButton aRAM;
+    private javax.swing.JButton aTeclado;
     private javax.swing.JButton bCRUD_C;
     private javax.swing.JButton bCRUD_T;
+    private javax.swing.JButton bColor;
     private javax.swing.JButton bEnsamblaje;
     private javax.swing.JDialog crudCompu;
+    private com.toedter.calendar.JDateChooser dcFecha;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTextField tfMaterial;
+    private javax.swing.JTextField tfSerie;
     // End of variables declaration//GEN-END:variables
 }
