@@ -4,9 +4,12 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JColorChooser;
 import javax.swing.JOptionPane;
@@ -31,13 +34,13 @@ public class Main extends javax.swing.JFrame {
     static Teclado teclado;
     static Pantalla pantalla;
     static Procesador procesador;
-    
+
     static ArrayList<Computadora> computadoras = new ArrayList();
     static ArrayList<Tecnico> tecnicos = new ArrayList();
 
     static File file = new File("./bitacora.txt");
     static File tech = new File("./tecnicos.txt");
-    
+
     static File a_ram = new File("./ram.coc");
     static File a_disco = new File("./disco.coc");
     static File a_bateria = new File("./bateria.coc");
@@ -45,8 +48,7 @@ public class Main extends javax.swing.JFrame {
     static File a_pantalla = new File("./pantalla.coc");
     static File a_procesador = new File("./procesador.coc");
     static File compu = new File("./computadora.coc");
-    
-    
+
     public Main() {
         initComponents();
         setLocationRelativeTo(null);
@@ -757,38 +759,38 @@ public class Main extends javax.swing.JFrame {
         fecha = dcFecha.getDate();
         color = bColor.getBackground();
         material = tfMaterial.getText();
-        
+
         Computadora c = new Computadora(serie, fecha, color, material, ram, disco, bateria, teclado, pantalla, procesador);
         computadoras.add(c);
         JOptionPane.showMessageDialog(crudCompu, "Creado exitosamente");
         FileOutputStream fo = null;
         ObjectOutputStream oo = null;
-        try{
+        try {
             fo = new FileOutputStream(a_ram);
-            oo = new ObjectOutputStream(fo);            
+            oo = new ObjectOutputStream(fo);
             oo.writeObject(ram);
             fo = new FileOutputStream(a_disco);
-            oo = new ObjectOutputStream(fo);            
+            oo = new ObjectOutputStream(fo);
             oo.writeObject(disco);
             fo = new FileOutputStream(a_bateria);
-            oo = new ObjectOutputStream(fo);            
+            oo = new ObjectOutputStream(fo);
             oo.writeObject(bateria);
             fo = new FileOutputStream(a_teclado);
-            oo = new ObjectOutputStream(fo);            
+            oo = new ObjectOutputStream(fo);
             oo.writeObject(teclado);
             fo = new FileOutputStream(a_pantalla);
-            oo = new ObjectOutputStream(fo);            
+            oo = new ObjectOutputStream(fo);
             oo.writeObject(pantalla);
             fo = new FileOutputStream(a_procesador);
-            oo = new ObjectOutputStream(fo);            
+            oo = new ObjectOutputStream(fo);
             oo.writeObject(procesador);
             fo = new FileOutputStream(compu);
-            oo = new ObjectOutputStream(fo);            
+            oo = new ObjectOutputStream(fo);
             oo.writeObject(c);
             //no se creo que esta bien
-        }catch(Exception e){            
+        } catch (Exception e) {
         }
-        
+
     }//GEN-LAST:event_aCompuMouseClicked
 
     private void bColorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bColorMouseClicked
@@ -819,13 +821,13 @@ public class Main extends javax.swing.JFrame {
 
     private void aTecladoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_aTecladoMouseClicked
         teclado = new Teclado(JOptionPane.showInputDialog(crudCompu, "Ingrese material"),
-        JColorChooser.showDialog(crudCompu, "Ingrese color", Color.black), 2);
+                JColorChooser.showDialog(crudCompu, "Ingrese color", Color.black), 2);
     }//GEN-LAST:event_aTecladoMouseClicked
 
     private void aPantallaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_aPantallaMouseClicked
         int temp = JOptionPane.showConfirmDialog(crudCompu, "La pantalla es tactil?");
         String tipo = JOptionPane.showInputDialog(crudCompu, "Ingrese tipo");
-        if (temp == 0){
+        if (temp == 0) {
             pantalla = new Pantalla(true, tipo, 4);
         } else {
             pantalla = new Pantalla(false, tipo, 4);
@@ -834,7 +836,7 @@ public class Main extends javax.swing.JFrame {
 
     private void aProcesadorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_aProcesadorMouseClicked
         procesador = new Procesador(Integer.parseInt(JOptionPane.showInputDialog(crudCompu, "Ingrese cantidad de nucleos")),
-        JOptionPane.showInputDialog(crudCompu, "Ingrese velocidad"), 3);
+                JOptionPane.showInputDialog(crudCompu, "Ingrese velocidad"), 3);
     }//GEN-LAST:event_aProcesadorMouseClicked
 
     private void bActualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bActualizarMouseClicked
@@ -874,13 +876,23 @@ public class Main extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(crudTecnico, "Creado exitosamente");
         FileWriter fw = null;
         BufferedWriter bw = null;
-        try{
+        try {
             fw = new FileWriter(tech, true);
             bw = new BufferedWriter(fw);
+
             bw.write(t.toString());
-        }catch(Exception e){
-            
+            bw.newLine();
+            bw.flush();
+        } catch (Exception e) {
+
         }
+        try {
+            fw.close();
+            bw.close();
+        } catch (IOException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }//GEN-LAST:event_bAgregarTMouseClicked
 
     private void bActualizarTMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bActualizarTMouseClicked
@@ -910,29 +922,38 @@ public class Main extends javax.swing.JFrame {
     private void bIniciarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bIniciarMouseClicked
         Computadora c = (Computadora) cbCSimulacion.getSelectedItem();
         Tecnico t = (Tecnico) cbTSimulacion.getSelectedItem();
-        int duracion = c.getRam().getTiempo() + c.getDisco().getTiempo()+
-                c.getBateria().getTiempo() + c.getTeclado().getTiempo()+
-                c.getPantalla().getTiempo() + c.getProcesador().getTiempo();
-        progressbar.setMaximum(100);        
+        int duracion = c.getRam().getTiempo() + c.getDisco().getTiempo()
+                + c.getBateria().getTiempo() + c.getTeclado().getTiempo()
+                + c.getPantalla().getTiempo() + c.getProcesador().getTiempo();
+        progressbar.setMaximum(100);
         Hilos h = new Hilos(duracion, progressbar, c, t);
         h.start();
-        if (h.isArmado()){
+        if (h.isArmado()) {
             t.setEnsambladas(t.getEnsambladas() + 1);
             int index = cbTSimulacion.getSelectedIndex();
             tecnicos.set(index, t);
         } else {
             FileWriter fw = null;
             BufferedWriter bw = null;
-            try{
+            try {
                 fw = new FileWriter(file, true);
                 bw = new BufferedWriter(fw);
                 bw.write("Computadora: " + c + " con tecnico: " + t + " no se armo exitosamente");
-            }catch(Exception e){
-                
+                bw.newLine();
+                bw.flush();
+            } catch (Exception e) {
+
             }
+            try {
+                fw.close();
+                bw.close();
+            } catch (IOException ex) {
+                Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
         }
-            
-            
+
+
     }//GEN-LAST:event_bIniciarMouseClicked
 
     private void bCRUD_TMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bCRUD_TMouseClicked
@@ -944,7 +965,7 @@ public class Main extends javax.swing.JFrame {
     private void bACMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bACMouseClicked
         DefaultComboBoxModel modelo = (DefaultComboBoxModel) cbCSimulacion.getModel();
         DefaultComboBoxModel modelo2 = (DefaultComboBoxModel) cbTSimulacion.getModel();
-        
+
         for (Computadora computadora : computadoras) {
             modelo.addElement(computadora);
         }
